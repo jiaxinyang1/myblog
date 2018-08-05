@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
 <html lang="zh-CN">
 <head>
     <link rel="stylesheet" type="text/css" href="css/index.css"/>
@@ -31,14 +30,15 @@
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="js/contentJs.js"></script>
 
-    <script src="js/indexJSon.js"></script>
+
 </head>
 
-<body onload="blog_post_content()">
+<body onload="show_content()&show_comment()">
+
 <!-- Static navbar -->
-<nav id="my_nav" class="navbar navbar-default navbar-static-top" style="opacity: 0.8">
+<nav class="navbar navbar-default navbar-static-top" style="opacity: 0.8">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -47,12 +47,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" >灵梦小站</a>
+            <a class="navbar-brand" href="ftlIndex">灵梦小站</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">神社</a></li>
-                <li><a href="Content.html">C++闲谈</a></li>
+                <li><a href="#about">C++闲谈</a></li>
                 <li><a href="#contact">Direct笔记</a></li>
             </ul>
         </div><!--/.nav-collapse -->
@@ -63,55 +63,16 @@
 <div class="container"  style="margin-bottom: 80px">
     <img src="image/title2.jpg" class="img-rounded" width="1000" height="200px">
     <div  style="margin-left: 70px;margin-top: 50px" class="blog-header">
-        <h1 class="blog-title">欢迎来到幻想乡</h1>
-        <p class="lead blog-description" style="color: slategrey">异变处理事务所</p>
+        <h1 id="title" class="blog-title"></h1><!--大标题 -->
+        <p  id="description" class="lead blog-description" style="color: slategrey"></p><!--注解-->
     </div>
     <div class="row" >
         <div class="col-sm-8 blog-main" style="padding-left: 30px">
-            <div style="padding-left: 70px" id="Summary_content">
-                <div  id="blog-post_01" class="blog-post" >
-                    <a class="blog-post-title" onclick="go_to_content(this)(this)" ></a>
-                    <p  class="blog-post-meta" ></p>
-                    <p id="main_text" style="color:lightslategray;font-size: 16px" >
-                    </p>
-                    <p class="blog-post-meta" style="text-align: right"> </p>
-                </div>
-                <div  id="blog-post_02" class="blog-post" >
-                    <a class="blog-post-title" onclick="go_to_content(this)(this)" ></a>
-                    <p  class="blog-post-meta" ></p>
-                    <p id="main_text" style="color:lightslategray;font-size: 16px" >
-                    </p>
-                    <p class="blog-post-meta" style="text-align: right"> </p>
-                </div>
-                <div  id="blog-post_03" class="blog-post" >
-                    <a class="blog-post-title" onclick="go_to_content(this)(this)" ></a>
-                    <p  class="blog-post-meta" ></p>
-                    <p id="main_text" style="color:lightslategray;font-size: 16px" >
-                    </p>
-                    <p class="blog-post-meta" style="text-align: right"> </p>
-                </div>
-                <div  id="blog-post_04" class="blog-post" >
-                    <a class="blog-post-title" onclick="go_to_content(this)(this)" ></a>
-                    <p  class="blog-post-meta" ></p>
-                    <p id="main_text" style="color:lightslategray;font-size: 16px" >
-                    </p>
-                    <p class="blog-post-meta" style="text-align: right"> </p>
-                </div>
-                <div  id="blog-post_05" class="blog-post" >
-                    <a class="blog-post-title" onclick="go_to_content(this)(this)" ></a>
-                    <p  class="blog-post-meta" ></p>
-                    <p id="main_text" style="color:lightslategray;font-size: 16px" >
-                    </p>
-                    <p class="blog-post-meta" style="text-align: right"> </p>
-                </div>
+            <div class="blog-post" style="margin-left: 70px"><!--测试文本-->
+                <div id="main_content"><!--内容主体块，需要写一个html转换层-->
 
+                </div>
             </div>
-
-
-                <div style="margin-top: 20px"><!--导航下一页上一页-->
-                    <p hidden id="page">0</p><!--标记页数-->
-                    <a style="float: right" onclick="blog_post_content()">查看更多</a></span>
-                </div>
 
 
         </div>
@@ -171,7 +132,41 @@
         </div><!-- /.blog-sidebar -->
 
     </div> <!-- /container -->
+    <div class="panel panel-default" style="background-color: transparent;margin-left: 70px;margin-top: 100px;margin-right: 50px">
+        <div class="panel-heading" style="background-color: transparent">
+            <h3 class="panel-title">
+                在这里写下你的评论吧
+            </h3>
+        </div>
+        <div class="panel-body" >
+            <div id="comment_body">
+            </div>
+            <h4 style="margin-top: 50px">发表评论</h4>
+            <div style="">
+                <form  role="form" action="/AddComment"  method="post">
+                    <div class="input-group">
+                        <label>昵称</label>
+                        <input type="text" name="nickname" class="form-control" placeholder="请输入昵称">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <label>电子邮件</label>
+                        <input type="text"  name="date" class="form-control" placeholder="请输入邮箱">
+                    </div>
+                    <br>
+                    <div class="input-group" style="width: 100%">
+                        <label >评论</label>
+                        <br>
+                        <textarea name="content" class="form-control" rows="5" style="width: 100%"></textarea>
+                    </div>
+                    <div class="form-group" style="margin-top: 30px">
+                        <button type="submit" class="btn btn-default">提交</button>
+                    </div>
+                </form>
+            </div>
 
+        </div>
+    </div>
     <div class="page-header"></div>
     <footer  style="text-align: center;padding-bottom: 20px;" >
         <a style="font-size: 16px">此生无悔入东方，来世愿生幻想乡</a>
@@ -182,10 +177,7 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script>
-
-</script>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

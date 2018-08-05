@@ -10,4 +10,9 @@ public class ftlIndex {
     {
         return "ftlIndex";
     }
+
+    @RequestMapping("/ftlContent")
+    public String ftlContent(){
+        return "content";
+    }
 }
