@@ -8,7 +8,7 @@ function show_content() {
         success : function (data) {
             $("#title").html(data.title)
             $("#description").html(data.description)
-            $("#main_content").html(data.mainContent)
+            $("#main_content").html(data.content)
 
         }
 

@@ -13,6 +13,7 @@ public class Comment {
     private Integer id;
     private String  nickname;
     private String  date;
+    @Column(columnDefinition = "LONGTEXT")
     private String  content;
     private String  belong;
 

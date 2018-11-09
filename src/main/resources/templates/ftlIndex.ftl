@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
 <html lang="zh-CN">
 <head>
     <link rel="stylesheet" type="text/css" href="css/index.css"/>
@@ -16,16 +15,6 @@
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="navbar-static-top.css" rel="stylesheet">
-    <link href="blog.css" rel="stylesheet">
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -34,9 +23,10 @@
     <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
 
     <script src="js/indexJSon.js"></script>
+    <script src="js/sidebar.js"></script>
 </head>
 
-<body onload="blog_post_content()">
+<body onload="blog_post_content()&recently_articles()&notice()">
 <!-- Static navbar -->
 <nav id="my_nav" class="navbar navbar-default navbar-static-top" style="opacity: 0.8">
     <div class="container">
@@ -51,9 +41,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">神社</a></li>
-                <li><a href="Content.html">C++闲谈</a></li>
-                <li><a href="#contact">Direct笔记</a></li>
+                <li class="active"><a href="/">神社</a></li>
+                <li><a href="#">C++闲谈</a></li>
+                <li><a href="#">Direct笔记</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -69,42 +59,6 @@
     <div class="row" >
         <div class="col-sm-8 blog-main" style="padding-left: 30px">
             <div style="padding-left: 70px" id="Summary_content">
-                <div  id="blog-post_01" class="blog-post" >
-                    <a class="blog-post-title" onclick="go_to_content(this)(this)" ></a>
-                    <p  class="blog-post-meta" ></p>
-                    <p id="main_text" style="color:lightslategray;font-size: 16px" >
-                    </p>
-                    <p class="blog-post-meta" style="text-align: right"> </p>
-                </div>
-                <div  id="blog-post_02" class="blog-post" >
-                    <a class="blog-post-title" onclick="go_to_content(this)(this)" ></a>
-                    <p  class="blog-post-meta" ></p>
-                    <p id="main_text" style="color:lightslategray;font-size: 16px" >
-                    </p>
-                    <p class="blog-post-meta" style="text-align: right"> </p>
-                </div>
-                <div  id="blog-post_03" class="blog-post" >
-                    <a class="blog-post-title" onclick="go_to_content(this)(this)" ></a>
-                    <p  class="blog-post-meta" ></p>
-                    <p id="main_text" style="color:lightslategray;font-size: 16px" >
-                    </p>
-                    <p class="blog-post-meta" style="text-align: right"> </p>
-                </div>
-                <div  id="blog-post_04" class="blog-post" >
-                    <a class="blog-post-title" onclick="go_to_content(this)(this)" ></a>
-                    <p  class="blog-post-meta" ></p>
-                    <p id="main_text" style="color:lightslategray;font-size: 16px" >
-                    </p>
-                    <p class="blog-post-meta" style="text-align: right"> </p>
-                </div>
-                <div  id="blog-post_05" class="blog-post" >
-                    <a class="blog-post-title" onclick="go_to_content(this)(this)" ></a>
-                    <p  class="blog-post-meta" ></p>
-                    <p id="main_text" style="color:lightslategray;font-size: 16px" >
-                    </p>
-                    <p class="blog-post-meta" style="text-align: right"> </p>
-                </div>
-
             </div>
 
 
@@ -118,18 +72,13 @@
         <!--侧边栏-->
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
             <div class="sidebar-module sidebar-module-inset">
-                <div><!--公告栏主题内容-->
+                <div id="notice"><!--公告栏主题内容-->
                     <h4>公告栏</h4>
-                    <p id="Notice_time">2016.6.8</p>
-                    <p id="Notice_content">公告栏测试内容，这里是公告栏测试的内容</p>
+
                 </div>
                 <div class="sidebar-module" style="margin-top: 30px">
                     <h4>近期文章</h4>
-                    <ol class="list-unstyled" style="color: slategrey"><!--近期文章-->
-                        <li><p href="#">近期文章测试</p></li>
-                        <li><p href="#">近期文章测试</p></li>
-                        <li><p href="#">近期文章测试</p></li>
-                        <li><p href="#">近期文章测试</p></li>
+                    <ol class="list-unstyled" style="color: slategrey" id="recently_articles_list"><!--近期文章-->
                     </ol>
                 </div>
 
@@ -151,21 +100,10 @@
                     <li><a href="#">April 2013</a></li>
                 </ol>
             </div>
-            <div class="sidebar-module" style="margin-top: 30px">
-                <h4>文章分类</h4>
-                <ol class="list-unstyled" style="color: slategrey"><!--近期文章-->
-                    <li><p href="#">c++</p></li>
-                    <li><p href="#">dirctX</p></li>
-                    <li><p href="#">Java</p></li>
-                    <li><p href="#">杂谈</p></li>
-                </ol>
-            </div>
             <div class="sidebar-module">
                 <h4>链接</h4>
                 <ol class="list-unstyled">
                     <li><a href="https://github.com/jiaxinyang1">GitHub</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Facebook</a></li>
                 </ol>
             </div>
         </div><!-- /.blog-sidebar -->
@@ -189,7 +127,6 @@
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
 </body>
 </html>

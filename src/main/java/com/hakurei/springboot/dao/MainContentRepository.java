@@ -11,4 +11,7 @@ public interface MainContentRepository  extends CrudRepository<MainContent,Long>
 
     @Query("select c from MainContent c where c.title =:title")
     public MainContent findByName(@Param("title") String title);
+
+    @Query("select c from MainContent c where c.id=:id")
+    public MainContent findById(@Param("id") int id);
 }

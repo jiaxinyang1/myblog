@@ -13,7 +13,8 @@ public class MainContent {
     private Integer id;
     private String  title;
     private String  description;
-    private String  maincontent;
+    @Column(name = "maincontent" ,columnDefinition = "LONGTEXT")
+    private String  content;
 
     public Integer getId() {
         return id;
@@ -39,12 +40,12 @@ public class MainContent {
         this.description = description;
     }
 
-    public String getMainContent() {
-        return maincontent;
+    public String getContent() {
+        return content;
     }
 
-    public void setMainContent(String mainContent) {
-        this.maincontent = mainContent;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     @Override
@@ -52,6 +53,6 @@ public class MainContent {
         return "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", mainContent='" + maincontent + '\'' ;
+                ", mainContent='" + content + '\'' ;
     }
 }

@@ -13,5 +13,7 @@ public interface CommentRepository extends CrudRepository<Comment,Long> {
 
     @Query("select com from Comment com where com.belong=:belong")
     public List findAllByBelong(@Param("belong") String belong);
+
+
 }
 

@@ -10,20 +10,11 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Static Top Navbar Example for Bootstrap</title>
+    <title>文章</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="navbar-static-top.css" rel="stylesheet">
-    <link href="blog.css" rel="stylesheet">
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -31,11 +22,13 @@
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="js/contentJs.js"></script>
+    <script src="js/indexJSon.js"></script>
+    <script src="js/sidebar.js"></script>
 
 
 </head>
 
-<body onload="show_content()&show_comment()">
+<body onload="show_content()&show_comment()&recently_articles()&notice()">
 
 <!-- Static navbar -->
 <nav class="navbar navbar-default navbar-static-top" style="opacity: 0.8">
@@ -47,13 +40,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="ftlIndex">灵梦小站</a>
+            <a class="navbar-brand" href="#">灵梦小站</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">神社</a></li>
-                <li><a href="#about">C++闲谈</a></li>
-                <li><a href="#contact">Direct笔记</a></li>
+                <li class="active"><a href="/">神社</a></li>
+                <li><a href="#">C++闲谈</a></li>
+                <li><a href="#">Direct笔记</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -68,29 +61,20 @@
     </div>
     <div class="row" >
         <div class="col-sm-8 blog-main" style="padding-left: 30px">
-            <div class="blog-post" style="margin-left: 70px"><!--测试文本-->
-                <div id="main_content"><!--内容主体块，需要写一个html转换层-->
-
+            <div class="blog-post" style="margin-left: 70px">
+                <div id="main_content"><!--内容主体块，-->
                 </div>
             </div>
-
-
         </div>
         <!--侧边栏-->
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
             <div class="sidebar-module sidebar-module-inset">
-                <div><!--公告栏主题内容-->
+                <div id="notice"><!--公告栏主题内容-->
                     <h4>公告栏</h4>
-                    <p id="Notice_time">2016.6.8</p>
-                    <p id="Notice_content">公告栏测试内容，这里是公告栏测试的内容</p>
                 </div>
                 <div class="sidebar-module" style="margin-top: 30px">
                     <h4>近期文章</h4>
-                    <ol class="list-unstyled" style="color: slategrey"><!--近期文章-->
-                        <li><p href="#">近期文章测试</p></li>
-                        <li><p href="#">近期文章测试</p></li>
-                        <li><p href="#">近期文章测试</p></li>
-                        <li><p href="#">近期文章测试</p></li>
+                    <ol class="list-unstyled" style="color: slategrey" id="recently_articles_list"><!--近期文章-->
                     </ol>
                 </div>
 
@@ -112,21 +96,10 @@
                     <li><a href="#">April 2013</a></li>
                 </ol>
             </div>
-            <div class="sidebar-module" style="margin-top: 30px">
-                <h4>文章分类</h4>
-                <ol class="list-unstyled" style="color: slategrey"><!--近期文章-->
-                    <li><p href="#">c++</p></li>
-                    <li><p href="#">dirctX</p></li>
-                    <li><p href="#">Java</p></li>
-                    <li><p href="#">杂谈</p></li>
-                </ol>
-            </div>
             <div class="sidebar-module">
                 <h4>链接</h4>
                 <ol class="list-unstyled">
                     <li><a href="https://github.com/jiaxinyang1">GitHub</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Facebook</a></li>
                 </ol>
             </div>
         </div><!-- /.blog-sidebar -->
@@ -180,8 +153,6 @@
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
 </body>
 </html>
